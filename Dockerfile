@@ -16,9 +16,13 @@ ENV HOME=/app_root
 
 WORKDIR /app_root
 
-COPY package.json .
+COPY . .
 
-RUN npm install node-gyp -verbose
-RUN npm install node-memwatch -verbose
-RUN npm install couchbase -verbose
-RUN npm install protagonist -verbose
+RUN npm install
+
+USER seluser
+WORKDIR /home/seluser
+
+COPY start-test.sh .
+
+CMD ["sh", "start-test.sh"]
