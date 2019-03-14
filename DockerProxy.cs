@@ -34,7 +34,7 @@ class DockerProxy
     Console.WriteLine("Created Container ID:" + response.ID);
 
     _dockerClient.Containers.StartContainerAsync(response.ID,
-      new ContainerStartParameters { }).GetAwaiter().GetResult();
+      new ContainerStartParameters { });
 
     Console.WriteLine("Started Container ID:" + response.ID);
 
