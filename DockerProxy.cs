@@ -58,10 +58,11 @@ class DockerProxy
         runningContainers++;
         continue;
       } else {
-        Console.WriteLine(container.Key + "is exited");
+        // Console.WriteLine(container.Key + "is exited");
       }
     }
 
+    Console.WriteLine("Started Containers: " + StartedContainers.Count);
     return runningContainers;
   }
 
