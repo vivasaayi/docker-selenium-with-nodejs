@@ -72,7 +72,7 @@ class DockerProxy
     IList<ContainerListResponse> containers = _dockerClient.Containers.ListContainersAsync(
       new ContainersListParameters()
       {
-        Limit = 10,
+        Limit = 200,
       }).GetAwaiter().GetResult();
 
     var containersDict = new Dictionary<string, ContainerListResponse>();

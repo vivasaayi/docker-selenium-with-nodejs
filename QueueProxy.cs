@@ -29,7 +29,7 @@ class QueueProxy
       CloudQueueMessage message = new CloudQueueMessage("Message::" + index++);
       queue.AddMessageAsync(message).GetAwaiter().GetResult();
       // Console.WriteLine("Message Added to Queue");
-      Thread.Sleep(1000);
+      Thread.Sleep(300);
     }
   }
 
@@ -43,7 +43,7 @@ class QueueProxy
     var allowedContainers = ConfigValues.GetIntValue("ALLOWEDCONTAINERS", 4);
     while (true)
     {
-      Thread.Sleep(1000);
+      Thread.Sleep(300);
 
       var runningContainers = DockerProxy.GetNumberOfContainersStarted();
 
@@ -56,7 +56,7 @@ class QueueProxy
       }
 
       // Create a message and add it to the queue.
-      var messages = queue.GetMessagesAsync(1, TimeSpan.FromMinutes(5), null, null).GetAwaiter().GetResult();
+      var messages = queue.GetMessagesAsync(3, TimeSpan.FromMinutes(5), null, null).GetAwaiter().GetResult();
 
       foreach (CloudQueueMessage message in messages)
       {
